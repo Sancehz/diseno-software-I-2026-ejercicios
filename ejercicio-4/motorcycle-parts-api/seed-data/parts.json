@@ -1,0 +1,72 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "name": "Filtro de aceite K&N premium",
+    "type": "filtro",
+    "price": 25.99,
+    "createdAt": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440002",
+    "name": "Pastillas de freno Brembo delanteras",
+    "type": "freno",
+    "price": 89.50,
+    "createdAt": "2024-01-16T14:20:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440003",
+    "name": "Cadena DID 520 de 120 eslabones",
+    "type": "transmision",
+    "price": 65.00,
+    "createdAt": "2024-01-17T09:15:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440004",
+    "name": "Bujía NGK Iridium",
+    "type": "motor",
+    "price": 12.75,
+    "createdAt": "2024-01-18T11:45:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440005",
+    "name": "Pastillas de freno traseras EBC",
+    "type": "freno",
+    "price": 45.00,
+    "createdAt": "2024-01-19T16:00:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440006",
+    "name": "Kit de arrastre (piñón + corona + cadena)",
+    "type": "transmision",
+    "price": 185.00,
+    "createdAt": "2024-01-20T08:30:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440007",
+    "name": "Filtro de aire K&N lavable",
+    "type": "filtro",
+    "price": 48.99,
+    "createdAt": "2024-01-21T13:10:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440008",
+    "name": "Aceite Motul 7100 10W-40 4L",
+    "type": "motor",
+    "price": 42.50,
+    "createdAt": "2024-01-22T10:00:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440009",
+    "name": "Disco de freno delantero flotante",
+    "type": "freno",
+    "price": 125.00,
+    "createdAt": "2024-01-23T15:30:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440010",
+    "name": "Kit de embrague completo",
+    "type": "transmision",
+    "price": 95.00,
+    "createdAt": "2024-01-24T12:20:00.000Z"
+  }
+]

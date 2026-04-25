@@ -1,0 +1,26 @@
+{
+  "name": "motorcycle-parts-api",
+  "version": "1.0.0",
+  "description": "Serverless API for trading motorcycle parts",
+  "main": "index.js",
+  "scripts": {
+    "dev": "serverless offline start",
+    "deploy": "serverless deploy",
+    "dynamodb:install": "serverless dynamodb install",
+    "dynamodb:start": "serverless dynamodb start",
+    "setup": "npm run dynamodb:install && npm run seed",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": ["serverless", "motorcycle", "parts", "api"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1691.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^13.3.0"
+  }
+}

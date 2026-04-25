@@ -1,0 +1,94 @@
+service: motorcycle-parts-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    PARTS_TABLE: ${self:service}-parts-${self:provider.stage}
+    IS_OFFLINE: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.PARTS_TABLE}"
+
+functions:
+  createPart:
+    handler: src/handlers/createPart.handler
+    events:
+      - http:
+          path: /partes
+          method: post
+          cors: true
+
+  searchParts:
+    handler: src/handlers/searchParts.handler
+    events:
+      - http:
+          path: /partes
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    PartsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.PARTS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: type
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: TypeIndex
+            KeySchema:
+              - AttributeName: type
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
+        BillingMode: PROVISIONED
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+plugins:
+  # - serverless-dynamodb
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  serverless-dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    seed:
+      domain:
+        sources:
+          - table: ${self:provider.environment.PARTS_TABLE}
+            sources: [./seed-data/parts.json]
+  serverless-offline:
+    httpPort: 3000
+    lambdaPort: 3002
